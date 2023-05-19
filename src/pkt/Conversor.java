@@ -8,52 +8,54 @@ public class Conversor {
 		
 		Scanner scanner = new Scanner(System.in);
 		String choices="";
-		String opciones="1∫ conversor de longitud"+"\n2∫ Conversor de peso"+ "\n3∫ Conversor de temperatura"; 
+		String opciones="1¬∫ conversor de longitud"+"\n2¬∫ Conversor de peso"+ 
+		"\n3¬∫ Conversor de temperatura"; 
 		
 		System.out.println("Seleccione su opcion en el menu------------------------------\n"+ opciones);
 		
-        System.out.println("Seleccione la opciÛn de conversiÛn:");
+        System.out.println("Seleccione la opci√≥n de conversi√≥n:");
         choices=scanner.nextLine();
         switch (choices) {
-        case "1":
-        	Coversor_long(scanner);
-        	break;
-        case "2":
-        	Coversor_peso(scanner);
-        	break;
-        case "3":
-        	break;
-        default:{
-        	System.out.println("Opcion no valida");
+        
+        case "1"-> Coversor_long(scanner);
+        	
+        case "2"->Coversor_peso(scanner);
+        
+        case "3"->Coversor_Temp(scanner);
+        	
+        	
+        default-> System.out.println("Opcion no valida");
         	
         }
 		
-			
 	}
-        
-	}
+	
+	
 	public static void Coversor_peso(Scanner scanner) {
 		
+		String res="";
 		double kg=0, libras=0;
 	    
 		System.out.println("Conversor de peso");
 		System.out.println("1. Kilogramos a libras");
 		System.out.println("2. libras a kilogramos");
-		System.out.print("Elige una opciÛn: ");
+		System.out.print("Elige una opci√≥n: ");
 		int opcion = scanner.nextInt();
 		
 		if (opcion == 1) {
 		    System.out.print("Ingresa el peso en kg: ");
 		     kg = scanner.nextDouble();
 		     libras = kg * 2.2;
-		    System.out.println(" el valor introducido en kg equivale a " + libras + " libras.");
+		    System.out.println(" el valor introducido en kg equivale a "
+		     + res.format("%.2f",libras)  + " libras.");
 		} else if (opcion == 2) {
 		    System.out.print("Ingresa el peso en libras: ");
 		     libras = scanner.nextDouble();
 		   	kg = libras / 2.2;
-		   	System.out.println(" el valor introducido en libras equivale a " + kg + " kg.");
+		   	System.out.println("el valor introducido en libras equivale a "
+		   	+ res.format("%.2f",kg)+ " kg.");
 		} else {
-		    System.out.println("OpciÛn inv·lida. Por favor, elige 1 o 2.");
+		    System.out.println("Opci√≥n inv√°lida. Por favor, elige 1 o 2.");
 		}       
 		scanner.close();
 	}
@@ -62,7 +64,7 @@ public class Conversor {
 		System.out.println("Conversor de Longitud");
 		System.out.println("1. Metros a Pies");
 		System.out.println("2. Pies a Metros");
-		System.out.print("Elige una opciÛn: ");
+		System.out.print("Elige una opci√≥n: ");
 		int opcion = scanner.nextInt();
 		
 		if (opcion == 1) {
@@ -76,8 +78,33 @@ public class Conversor {
 		    double metros = pies / 3.28084;
 		    System.out.println(pies + " pies equivale a " + metros + " metros.");
 		} else {
-		    System.out.println("OpciÛn inv·lida. Por favor, elige 1 o 2.");
+		    System.out.println("Opci√≥n inv√°lida. Por favor, elige 1 o 2.");
 		}       
+		scanner.close();
+	}
+	
+	public static void Coversor_Temp(Scanner scanner) {
+		
+		System.out.println("Conversor de temperatura");
+		System.out.println("1. Celsius a Farenheit" +
+		                "\n2. Farenheit a Celsius");
+		int opcion=scanner.nextInt();
+		
+		if(opcion==1) {
+			System.out.println("Ingresa la temperatura en celsius");
+			float celsius=scanner.nextFloat();
+			float farenheit=(float) ((celsius*1.8) + 32);
+			System.out.println(celsius + " equivale a " + farenheit + " en farenheit");
+			
+		}else if(opcion==2) {
+			System.out.println("Ingresa la temperatura en farenheit");
+			float farenheit=scanner.nextFloat();
+			float celsius=(float) ((farenheit-32)/1.8);
+			System.out.println(farenheit + " equivale a " + celsius + " en celsius");
+		}else {
+			System.out.println("Opcion inv√°lida. Por favor,elige 1 o 2.");
+		}
+		
 		scanner.close();
 	}
 }
